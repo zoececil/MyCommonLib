@@ -1,4 +1,0 @@
-diff a/ConfigDemo/all_configs/all_config_mcu.h b/ConfigDemo/all_configs/all_config_mcu.h	(rejected hunks)
-@@ -0 +0,2 @@
- #define mcu_stm32_hal
-+// #define mcu_tc264
