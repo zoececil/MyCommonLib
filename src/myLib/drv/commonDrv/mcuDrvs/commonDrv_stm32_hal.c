@@ -1,5 +1,5 @@
 #include "../commonDrv.h"
-#ifdef mcu_stm32_hal
+#ifdef mcu_stm32f1_hal
 void myDelayMS(int t)
 {
 }
