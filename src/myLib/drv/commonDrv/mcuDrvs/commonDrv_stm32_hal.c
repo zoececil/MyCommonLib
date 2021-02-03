@@ -1,7 +1,9 @@
 #include "../commonDrv.h"
-
 #ifdef mcu_stm32f1_hal
+
+extern UART_HandleTypeDef huart2;
 static u32 fac_us=0;
+
 void myDelayUS(u32 nus)
 {
 	u32 ticks;
@@ -32,13 +34,12 @@ void myDelayInit(u8 SYSCLK)
 	HAL_SYSTICK_CLKSourceConfig(SYSTICK_CLKSOURCE_HCLK);
 	fac_us=SYSCLK;
 }
-/*************************/
-void myPrint(const char *str)
+/***********重定向print**************/
+PUTCHAR_PROTOTYPE
 {
+    HAL_UART_Transmit(&huart2, (uint8_t *)&ch, 1, 0xFFFF);
+    return ch;
 }
-#endif
-
-
-#ifdef mcu_stm32f1_v3_5
 
 #endif
+
