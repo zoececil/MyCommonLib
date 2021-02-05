@@ -6,7 +6,7 @@
  *  add some changes to main.c
  */
 #include "../hardware_uart.h"
-#ifdef mcu_stm32f1_hal
+#ifdef mcu_stm32f1
 
 //extern UART_HandleTypeDef huart2;
 //u16 USART_RX_STA=0;

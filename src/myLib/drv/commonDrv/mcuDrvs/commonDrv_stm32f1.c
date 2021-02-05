@@ -1,7 +1,7 @@
 #include "../commonDrv.h"
-#ifdef mcu_stm32f1_hal
+#ifdef mcu_stm32f1
 
-//extern UART_HandleTypeDef huart2;
+extern UART_HandleTypeDef huart2;
 static u32 fac_us=0;
 
 void myDelayUS(u32 nus)
@@ -37,8 +37,8 @@ void myDelayInit(u8 SYSCLK)
 /***********重定向print**************/
 PUTCHAR_PROTOTYPE
 {
-//    HAL_UART_Transmit(&huart2, (uint8_t *)&ch, 1, 0xFFFF);
-//    return ch;
+    HAL_UART_Transmit(&huart2, (uint8_t *)&ch, 1, 0xFFFF);
+    return ch;
 }
 
 #endif
