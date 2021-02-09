@@ -64,25 +64,26 @@ PinState readCol(char index)
 	{
 	case 0:
 		/****/
-		HAL_GPIO_ReadPin(COL1_GPIO_Port, COL1_Pin);
+		flag = HAL_GPIO_ReadPin(COL1_GPIO_Port, COL1_Pin);
 		break;
 
 	case 1:
 		/****/
-		HAL_GPIO_ReadPin(COL2_GPIO_Port, COL2_Pin);
+		flag = HAL_GPIO_ReadPin(COL2_GPIO_Port, COL2_Pin);
 		break;
 
 	case 2:
 		/****/
-		HAL_GPIO_ReadPin(COL3_GPIO_Port, COL3_Pin);
+		flag = HAL_GPIO_ReadPin(COL3_GPIO_Port, COL3_Pin);
 		break;
 
 	case 3:
 		/****/
-		HAL_GPIO_ReadPin(COL4_GPIO_Port, COL4_Pin);
+		flag = HAL_GPIO_ReadPin(COL4_GPIO_Port, COL4_Pin);
 		break;
 
 	}
+	return flag;
 }
 
 #endif

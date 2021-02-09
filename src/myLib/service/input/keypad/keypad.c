@@ -19,7 +19,7 @@ void sum_event(unsigned char sum)
 	switch (sum)
 	{
 	case 0:
-		printf("no press\r\n");
+		printf("no event\r\n");
 		break;
 
 	case 1:

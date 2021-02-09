@@ -16,6 +16,7 @@ typedef enum
   PIN_SET
 } PinState;
 
+PinState flag;
 void setOut(char target, PinState state);
 void writeRow(char index,PinState state);
 PinState readCol(char index);
