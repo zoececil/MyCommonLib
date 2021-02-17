@@ -1,17 +1,10 @@
-/*
- * keypad.h
- *
- *  Created on: Feb 5, 2021
- *      Author: zoe
- */
-
-#ifndef MYCOMMONLIB_SRC_MYLIB_SERVICE_INPUT_KEYPAD_KEYPAD_H_
-#define MYCOMMONLIB_SRC_MYLIB_SERVICE_INPUT_KEYPAD_KEYPAD_H_
-
-#include "myLib/drv/commonDrv/commonDrv.h"
+#include "all_config.h"
+#ifdef service_input_keypad
+#ifndef __KEYPAD_H
+#define __KEYPAD_H
 #include "keypad_drv.h"
 #include "keypadsrc.h"
-#ifdef service_input_keypad
+
 
 extern unsigned char i,j,k,x,y,sum;
 
@@ -33,5 +26,4 @@ void sum_event(unsigned char sum);
 
 
 #endif
-
-#endif /* MYCOMMONLIB_SRC_MYLIB_SERVICE_INPUT_KEYPAD_KEYPAD_H_ */
+#endif

@@ -1,11 +1,7 @@
-/*
- * keypad.c
- *
- *  Created on: Feb 5, 2021
- *      Author: 16708zoe
- */
-#include "keypad.h"
+#include "all_config.h"
+
 #ifdef service_input_keypad
+#include "keypad.h"
 
 unsigned char i,j,k,x,y,sum,lensize,widsize;
 PinState write_pin_state,set_pin_state;

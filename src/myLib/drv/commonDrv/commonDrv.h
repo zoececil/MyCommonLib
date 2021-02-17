@@ -1,3 +1,5 @@
+#ifndef __COMMONDRV_H
+#define __COMMONDRV_H
 #include "all_config.h"
 #include "../nativeInterface.h"
 #include "stdio.h"
@@ -12,5 +14,7 @@ void myDelayInit(u8 SYSCLK);
 #define PUTCHAR_PROTOTYPE int __io_putchar(int ch)
 #else
 #define PUTCHAR_PROTOTYPE int fputc(int ch, FILE *f)
+
+#endif
 #endif
 /**************ÆäËû(´ýÍêÉÆ)***************/
