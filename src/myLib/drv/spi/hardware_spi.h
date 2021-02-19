@@ -3,7 +3,7 @@
 
 #include "myLib/drv/commonDrv/commonDrv.h"
 
-void spiTransmit(unsigned char *pdata, unsigned int size);
+void spiTransmit(unsigned char data, unsigned int size);
 void spiReceive(unsigned char *pdata, unsigned int size);
 void spiTR(unsigned char *pTdata,unsigned char *pRdata,unsigned int size);
 
