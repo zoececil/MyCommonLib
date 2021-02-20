@@ -41,5 +41,9 @@ PUTCHAR_PROTOTYPE
     return ch;
 }
 
+//void WritePin(u16 Pin,PinState State)
+//{
+//	HAL_GPIO_WritePin(GPIOB,Pin,State);
+//}
 #endif
 

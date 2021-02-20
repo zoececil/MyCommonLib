@@ -3,73 +3,76 @@
 #ifdef service_display_tftlcd
 #ifdef mcu_stm32f1
 
-#define LCD_CTRL   	  	GPIOB		//定义TFT数据端口
-#define LCD_LED        	GPIO_PIN_9  //MCU_PB9--->>TFT --BL
-#define LCD_RS         	GPIO_PIN_10	//PB11--->>TFT --RS/DC
-#define LCD_CS        	GPIO_PIN_11 //MCU_PB11--->>TFT --CS/CE
-#define LCD_RST     	GPIO_PIN_12	//PB10--->>TFT --RST
-#define LCD_SCL        	GPIO_PIN_13	//PB13--->>TFT --SCL/SCK
-#define LCD_SDA        	GPIO_PIN_15	//PB15 MOSI--->>TFT --SDA/DIN
+#define LCD_CTRL   	  	GPIOB
+#define LCD_LED        	GPIO_PIN_9
+#define LCD_RS         	GPIO_PIN_10
+#define LCD_CS        	GPIO_PIN_11
+#define LCD_RST     	GPIO_PIN_12
+#define LCD_SCL        	GPIO_PIN_13
+#define LCD_SDA        	GPIO_PIN_15
 
 void LCD_GPIO_Init(void)
 {
-
 }
-
-void LCD_setCS(uint8_t i)
+void LCD_setCS(void)
 {
-	if(i == 0) {
-		LCD_CTRL->BRR=LCD_CS;
-	}
-	if(i == 1){
-		LCD_CTRL->BSRR=LCD_CS;
-	}
+//	HAL_GPIO_WritePin(LCD_CTRL, LCD_CS,GPIO_PIN_SET);
+	LCD_CTRL->BSRR=LCD_CS;
 }
-void LCD_setRS(uint8_t i)
+void LCD_setRS(void)
 {
-	if(i == 0) {
-		LCD_CTRL->BRR=LCD_RS;
-	}
-	if(i == 1){
-		LCD_CTRL->BSRR=LCD_RS;
-	}
+//	HAL_GPIO_WritePin(LCD_CTRL, LCD_RS,GPIO_PIN_SET);
+	LCD_CTRL->BSRR=LCD_RS;
 }
-void LCD_setSDA(uint8_t i)
+void LCD_setSDA(void)
 {
-	if(i == 0) {
-		LCD_CTRL->BRR=LCD_SDA;
-	}
-	if(i == 1){
-		LCD_CTRL->BSRR=LCD_SDA;
-	}
+//	HAL_GPIO_WritePin(LCD_CTRL, LCD_SDA,GPIO_PIN_SET);
+	LCD_CTRL->BSRR=LCD_SDA;
 }
-void LCD_setSCL(uint8_t i)
+void LCD_setSCL(void)
 {
-	if(i == 0) {
-		LCD_CTRL->BRR=LCD_SCL;
-	}
-	if(i == 1){
-		LCD_CTRL->BSRR=LCD_SCL;
-	}
+//	HAL_GPIO_WritePin(LCD_CTRL, LCD_SCL,GPIO_PIN_SET);
+	LCD_CTRL->BSRR=LCD_SCL;
 }
-void LCD_setRST(uint8_t i)
+void LCD_setRST(void)
 {
-	if(i == 0) {
-		LCD_CTRL->BRR=LCD_RST;
-	}
-	if(i == 1){
-		LCD_CTRL->BSRR=LCD_RST;
-	}
+//	HAL_GPIO_WritePin(LCD_CTRL, LCD_RST,GPIO_PIN_SET);
+	LCD_CTRL->BSRR=LCD_RST;
 }
-void LCD_setLED(uint8_t i)
+void LCD_setLED(void)
 {
-	if(i == 0) {
-		LCD_CTRL->BRR=LCD_LED;
-	}
-	if(i == 1){
-		LCD_CTRL->BSRR=LCD_LED;
-	}
+//	HAL_GPIO_WritePin(LCD_CTRL, LCD_LED,GPIO_PIN_SET);
+	LCD_CTRL->BSRR=LCD_LED;
 }
-
+void LCD_resetCS(void)
+{
+//	HAL_GPIO_WritePin(LCD_CTRL, LCD_CS,GPIO_PIN_RESET);
+	LCD_CTRL->BRR=LCD_CS;
+}
+void LCD_resetRS(void)
+{
+//	HAL_GPIO_WritePin(LCD_CTRL, LCD_RS,GPIO_PIN_RESET);
+	LCD_CTRL->BRR=LCD_RS;
+}
+void LCD_resetSDA(void)
+{
+//	HAL_GPIO_WritePin(LCD_CTRL, LCD_SDA,GPIO_PIN_RESET);
+	LCD_CTRL->BRR=LCD_SDA;
+}
+void LCD_resetSCL(void)
+{
+//	HAL_GPIO_WritePin(LCD_CTRL, LCD_SCL,GPIO_PIN_RESET);
+	LCD_CTRL->BRR=LCD_SCL;
+}
+void LCD_resetRST(void)
+{
+//	HAL_GPIO_WritePin(LCD_CTRL, LCD_RST,GPIO_PIN_RESET);
+	LCD_CTRL->BRR=LCD_RST;
+}
+void LCD_resetLED(void)
+{
+//	HAL_GPIO_WritePin(LCD_CTRL, LCD_LED,GPIO_PIN_RESET);
+	LCD_CTRL->BRR=LCD_LED;
+}
 #endif
 #endif

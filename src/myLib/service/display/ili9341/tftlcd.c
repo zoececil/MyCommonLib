@@ -63,9 +63,9 @@ void LCD_Init(void)
 
 	LCD_WriteIndex(0x36);
 	#if Select_Horizontal
-		LCD_WriteData8Bit(0xE8);//��������
+		LCD_WriteData8Bit(0xE8);
 	#else
-		LCD_WriteData8Bit(0x48);//��������
+		LCD_WriteData8Bit(0x48);
 	#endif
 
 	LCD_WriteIndex(0xB1);  /* Frame Rate Control (In Normal Mode/Full Colors) (B1h) */
@@ -120,18 +120,36 @@ void LCD_Init(void)
 	LCD_WriteIndex(0x29);  	/* Display ON (29h) */
 
 }
+void  LCD_Write_spi(uint8_t Data)//软件模拟spi写一个字节
+{
+	unsigned char i=0;
+	for(i=8;i>0;i--)
+	{
+		if(Data&0x80)
+	  LCD_SDA_SET; //输出数据
+      else LCD_SDA_CLR;
+
+      LCD_SCL_CLR;
+      LCD_SCL_SET;
+      Data<<=1;
+	}
+}
+//void LCD_Write_spi(uint8_t data)//硬
+//{
+//	spiTransmit(&data,1);
+//}
 void LCD_WriteIndex(uint8_t command)
 {
 	LCD_CS_CLR;
-	LCD_RS_CLR;               //D/CXΪ0��дָ��
-	spiTransmit(command,1);  //Ӳ��SPI
+	LCD_RS_CLR;
+	LCD_Write_spi(command);
 	LCD_CS_SET;
 }
 void LCD_WriteData8Bit(uint8_t data)
 {
 	LCD_CS_CLR;
-	LCD_RS_SET;             //D/CXΪ1��д���ݻ��������
-	spiTransmit(data,1);   //Ӳ��SPI
+	LCD_RS_SET;
+	LCD_Write_spi(data);
 	LCD_CS_SET;
 }
 void LCD_WriteData16Bit(uint16_t data)
@@ -156,6 +174,7 @@ void LCD_Clear(uint16_t Color)
    {
 	   LCD_WriteData16Bit(Color);
 
+
    }
 		LCD_CS_SET;
 }
@@ -177,6 +196,32 @@ void LCD_SetRegion(uint16_t x1, uint16_t y1,uint16_t x2,uint16_t y2)
 	LCD_WriteData16Bit(y1);
 	LCD_WriteData16Bit(y2);
 	LCD_WriteIndex(0x2C);
+}
+
+void Color_Test(void)
+{
+	uint8_t i=1;
+	LCD_Clear(GRAY0);
+	myDelayMS(500);
+
+	while(i--)
+	{
+		LCD_Clear(WHITE); myDelayMS(300);
+		LCD_Clear(BLACK); myDelayMS(300);
+		LCD_Clear(RED);	  myDelayMS(300);
+		LCD_Clear(GREEN); myDelayMS(300);
+		LCD_Clear(BLUE);  myDelayMS(300);
+	}
+}
+
+//测试函数
+void Test_Demo(void)
+{
+	LCD_Init();
+	LCD_LED_SET;//通过IO控制背光亮
+	Color_Test();//简单纯色填充测试
+	myDelayMS(1500);
+	LCD_LED_CLR;//IO控制背光灭
 }
 
 #endif

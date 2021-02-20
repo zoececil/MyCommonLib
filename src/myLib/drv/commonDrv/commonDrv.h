@@ -5,16 +5,19 @@
 #include "stdio.h"
 
 
-/***********ÑÓÊ±»ù±¾(È«)***************/
+/***********ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½(È«)***************/
 void myDelayUS(u32 nus);
 void myDelayMS(u16 nms);
 void myDelayInit(u8 SYSCLK);
-/***********ÖØ¶¨Ïò(´ýÍêÉÆ)***************/
+/***********ï¿½Ø¶ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)***************/
 #ifdef __GNUC__
 #define PUTCHAR_PROTOTYPE int __io_putchar(int ch)
 #else
 #define PUTCHAR_PROTOTYPE int fputc(int ch, FILE *f)
 
 #endif
+
+
+
 #endif
-/**************ÆäËû(´ýÍêÉÆ)***************/
+/**************ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)***************/

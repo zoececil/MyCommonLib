@@ -1,7 +1,7 @@
 /*
  * spi_stm32f1_hal.c
  *
- *  Created on: 2021Äê2ÔÂ3ÈÕ
+ *  Created on: 2021ï¿½ï¿½2ï¿½ï¿½3ï¿½ï¿½
  *      Author: 16708
  */
 #include "../hardware_spi.h"
@@ -9,9 +9,9 @@
 
 extern SPI_HandleTypeDef hspi2;
 
-void spiTransmit(unsigned char data, unsigned int size)
+void spiTransmit(unsigned char *pdata, unsigned int size)
 {
-	HAL_SPI_Transmit(&hspi2,&data,size,100);
+	HAL_SPI_Transmit(&hspi2,pdata,size,100);
 }
 void spiReceive(unsigned char *pdata, unsigned int size)
 {
