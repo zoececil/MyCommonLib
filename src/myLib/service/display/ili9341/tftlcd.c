@@ -120,24 +120,24 @@ void LCD_Init(void)
 	LCD_WriteIndex(0x29);  	/* Display ON (29h) */
 
 }
-void  LCD_Write_spi(uint8_t Data)//软件模拟spi写一个字节
-{
-	unsigned char i=0;
-	for(i=8;i>0;i--)
-	{
-		if(Data&0x80)
-	  LCD_SDA_SET; //输出数据
-      else LCD_SDA_CLR;
-
-      LCD_SCL_CLR;
-      LCD_SCL_SET;
-      Data<<=1;
-	}
-}
-//void LCD_Write_spi(uint8_t data)//硬
+//void  LCD_Write_spi(uint8_t Data)//软件模拟spi写一个字节
 //{
-//	spiTransmit(&data,1);
+//	unsigned char i=0;
+//	for(i=8;i>0;i--)
+//	{
+//		if(Data&0x80)
+//	  LCD_SDA_SET; //输出数据
+//      else LCD_SDA_CLR;
+//
+//      LCD_SCL_CLR;
+//      LCD_SCL_SET;
+//      Data<<=1;
+//	}
 //}
+void LCD_Write_spi(uint8_t data)//硬件spi
+{
+	spiTransmit(&data,1);
+}
 void LCD_WriteIndex(uint8_t command)
 {
 	LCD_CS_CLR;
