@@ -17,34 +17,31 @@
 #define Y_MAX_PIXEL	        Y_SIZE
 #endif
 
-#define	LCD_CS_SET  LCD_setCS()
-#define	LCD_RS_SET  LCD_setRS()
-#define	LCD_SDA_SET LCD_setSDA()
-#define	LCD_SCL_SET LCD_setSCL()
-#define	LCD_RST_SET LCD_setRST()
-#define	LCD_LED_SET LCD_setLED()
+#ifdef mcu_stm32f1
+#define LCD_CTRL   	  	GPIOB
+#define LCD_LED        	GPIO_PIN_9
+#define LCD_DC         	GPIO_PIN_10
+#define LCD_CS        	GPIO_PIN_11
+#define LCD_RST     	GPIO_PIN_12
+#define LCD_SCL        	GPIO_PIN_13
+#define LCD_SDA        	GPIO_PIN_15
 
-#define	LCD_CS_CLR  LCD_resetCS()
-#define	LCD_RS_CLR  LCD_resetRS()
-#define	LCD_SDA_CLR LCD_resetSDA()
-#define	LCD_SCL_CLR LCD_resetSCL()
-#define	LCD_RST_CLR LCD_resetRST()
-#define	LCD_LED_CLR LCD_resetLED()
+#define	LCD_CS_SET  	LCD_CTRL->BSRR=LCD_CS
+#define	LCD_DC_SET  	LCD_CTRL->BSRR=LCD_DC
+#define	LCD_SDA_SET  	LCD_CTRL->BSRR=LCD_SDA
+#define	LCD_SCL_SET  	LCD_CTRL->BSRR=LCD_SCL
+#define	LCD_RST_SET  	LCD_CTRL->BSRR=LCD_RST
+#define	LCD_LED_SET  	LCD_CTRL->BSRR=LCD_LED
 
-void LCD_GPIO_Init(void);
-void LCD_setCS(void);
-void LCD_setRS(void);
-void LCD_setSDA(void);
-void LCD_setSCL(void);
-void LCD_setRST(void);
-void LCD_setLED(void);
+#define	LCD_CS_CLR  	LCD_CTRL->BRR=LCD_CS
+#define	LCD_DC_CLR  	LCD_CTRL->BRR=LCD_DC
+#define	LCD_SDA_CLR  	LCD_CTRL->BRR=LCD_SDA
+#define	LCD_SCL_CLR  	LCD_CTRL->BRR=LCD_SCL
+#define	LCD_RST_CLR  	LCD_CTRL->BRR=LCD_RST
+#define	LCD_LED_CLR  	LCD_CTRL->BRR=LCD_LED
 
-void LCD_resetCS(void);
-void LCD_resetRS(void);
-void LCD_resetSDA(void);
-void LCD_resetSCL(void);
-void LCD_resetRST(void);
-void LCD_resetLED(void);
+#endif
+
 
 #endif
 
