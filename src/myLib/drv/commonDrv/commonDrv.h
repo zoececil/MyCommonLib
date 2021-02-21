@@ -4,12 +4,10 @@
 #include "../nativeInterface.h"
 #include "stdio.h"
 
-
-/***********��ʱ����(ȫ)***************/
 void myDelayUS(u32 nus);
 void myDelayMS(u16 nms);
 void myDelayInit(u8 SYSCLK);
-/***********�ض���(������)***************/
+
 #ifdef __GNUC__
 #define PUTCHAR_PROTOTYPE int __io_putchar(int ch)
 #else
@@ -20,4 +18,3 @@ void myDelayInit(u8 SYSCLK);
 
 
 #endif
-/**************����(������)***************/
